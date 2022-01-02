@@ -17,12 +17,11 @@ class SinglyLinkedList {
 
     if (!this.head) {
       this.head = newNode;
-      this.tail = newNode;
     } else {
       this.tail.next = newNode;
-      this.tail = newNode;
     }
-
+    
+    this.tail = newNode;
     this.length++;
     return this;
   }
@@ -168,3 +167,4 @@ list.push('TWO');
 list.push('THREE');
 list.push('FOUR');
 list.push('FIVE');
+list.traverse();
