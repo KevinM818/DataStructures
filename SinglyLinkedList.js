@@ -120,7 +120,7 @@ class SinglyLinkedList {
   }
 
   remove(index) {
-    if (index < 0 || index > this.length) return undefined;
+    if (index < 0 || index >= this.length) return undefined;
     if (index === this.length - 1) return this.pop();
     if (index === 0) return this.shift();
 
