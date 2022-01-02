@@ -153,6 +153,23 @@ class DoublyLinkedList {
     return removedNode;
   }
 
+  reverse() {
+    let node = this.head;
+    let next;
+
+    this.head = this.tail;
+    this.tail = node;
+
+    while (node) {
+      next = node.next;
+      node.next = node.prev;
+      node.prev = next;
+      node = next;
+    }
+
+    return this;
+  }
+
   traverse() {
     let node = this.head;
 
@@ -169,8 +186,3 @@ list.push('ZERO');
 list.push('ONE');
 list.push('TWO');
 list.push('THREE');
-
-
-list.remove(1);
-list.traverse();
-// console.log(list);
