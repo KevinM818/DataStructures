@@ -1,3 +1,4 @@
+//Stack - LIFO
 //Stack Linked List Implementation
 class Node {
   constructor(val) {
@@ -62,12 +63,14 @@ console.log(stack);
 
 
 //Stack Array Implementations
+//push/pop -> more efficent array stack implementation
 const pushArr = [];
 pushArr.push(1);
 pushArr.push(2);
 pushArr.push(3);
 pushArr.pop();
 
+//shift/unshift
 const shiftArr = [];
 shiftArr.unshift(3);
 shiftArr.unshift(2);
