@@ -10,6 +10,7 @@ class MaxBinaryHeap {
   }
   
   bubbleUp(index) {
+    if (index === 0) return;
     const parentIndex = Math.floor((index - 1) / 2);
     const parentValue = this.values[parentIndex];
     const currentValue = this.values[index];
@@ -26,25 +27,49 @@ class MaxBinaryHeap {
   extractMax() {
     const root = this.values[0];
     const end = this.values.pop();
-    this.values[0] = end;
-    this.bubbleDown();
+    
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.bubbleDown();
+    }
+
     return root;
   }
 
   bubbleDown(index = 0) {
+    const length = this.values.length;
     const leftIndex = (2 * index) + 1;
     const rightIndex = (2 * index) + 2;
     const currentValue = this.values[index];
-    const leftValue = this.values[leftIndex];
-    const rightValue = this.values[rightIndex];
-    let swap;
+    let leftValue;
+    let rightValue;
+    let swap = null;
 
+    if (leftIndex < length) {
+      leftValue = this.values[leftIndex];
+
+      if (leftValue > currentValue) {
+        swap = leftIndex;
+      }
+    }
+
+    if (rightIndex < length) {
+      rightValue = this.values[rightIndex];
+
+      if (
+        (swap === null && rightValue > currentValue) ||
+        (swap !== null && rightValue > leftValue)
+      ) {
+        swap = rightIndex;
+      }
+    }
+
+    if (swap === null) return;
+
+    this.values[index] = this.values[swap];
+    this.values[swap] = currentValue;
     
-
-
-
-
-    return;
+    return this.bubbleDown(swap);
   }
 
 }
